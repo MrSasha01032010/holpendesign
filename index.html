@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holpen Design | Студия дизайна</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-gold': '#8C7B3F',
+                        'rich-gold': '#C6A84D',
+                        'light-gold': '#E5D9B6',
+                        'dark-bg': '#121212',
+                        'darker-bg': '#0A0A0A',
+                    },
+                    fontFamily: {
+                        'display': ['Poppins', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #8C7B3F 0%, #C6A84D 50%, #8C7B3F 100%);
+        }
+        .gold-border {
+            border: 1px solid #C6A84D;
+        }
+        .gold-text-gradient {
+            background: linear-gradient(to right, #E5D9B6, #C6A84D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .product-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(198, 168, 77, 0.4);
+        }
+        .team-card {
+            transition: all 0.3s ease;
+        }
+        .team-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(198, 168, 77, 0.3);
+        }
+        .contact-input:focus {
+            border-color: #C6A84D;
+            box-shadow: 0 0 0 3px rgba(198, 168, 77, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-light-gold font-body">
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-darker-bg border-b border-dark-gold">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold tracking-tighter gold-text-gradient">HOLPEN DESIGN</h1>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <button data-tab="about" class="tab-link text-light-gold hover:text-rich-gold transition-colors font-medium">Про нас</button>
+                <button data-tab="products" class="tab-link text-light-gold hover:text-rich-gold transition-colors font-medium">Товары</button>
+                <button data-tab="team" class="tab-link text-light-gold hover:text-rich-gold transition-colors font-medium">Сотрудники</button>
+                <button data-tab="contact" class="tab-link text-light-gold hover:text-rich-gold transition-colors font-medium">Связь с нами</button>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-rich-gold">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-darker-bg border-t border-dark-gold">
+            <div class="flex flex-col py-4">
+                <button data-tab="about" class="tab-link py-3 px-4 text-light-gold hover:bg-dark-gold">Про нас</button>
+                <button data-tab="products" class="tab-link py-3 px-4 text-light-gold hover:bg-dark-gold">Товары</button>
+                <button data-tab="team" class="tab-link py-3 px-4 text-light-gold hover:bg-dark-gold">Сотрудники</button>
+                <button data-tab="contact" class="tab-link py-3 px-4 text-light-gold hover:bg-dark-gold">Связь с нами</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-dark-gold/10 to-dark-bg"></div>
+            <div class="absolute top-0 right-0 w-96 h-96 bg-rich-gold rounded-full opacity-10 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-rich-gold rounded-full opacity-10 blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-display font-bold mb-6 gold-text-gradient">
+                    Премиальный дизайн для ваших проектов
+                </h2>
+                <p class="text-xl text-light-gold mb-10">
+                    Создаем уникальные визуальные решения с золотым стандартом качества
+                </p>
+                <button data-tab="products" class="tab-link gold-gradient text-dark-bg font-bold py-3 px-8 rounded-full hover:opacity-90 transition-opacity">
+                    Наши работы
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pb-20">
+        <!-- About Section -->
+        <section id="about" class="tab-content py-12 active">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-display font-bold mb-2 text-rich-gold text-center">Про нас</h2>
+                <div class="h-1 w-24 bg-rich-gold mx-auto mb-12"></div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-display font-semibold mb-4 text-light-gold">Наша философия</h3>
+                        <p class="mb-4 text-light-gold">
+                            Holpen Design - это студия, где роскошь встречается с функциональностью. Мы верим, что каждый проект должен нести в себе частичку золотого стандарта качества и элегантности.
+                        </p>
+                        <p class="mb-4 text-light-gold">
+                            Основанная в 2015 году, наша студия прошла путь от маленькой мастерской до признанного лидера в области премиального дизайна. Мы специализируемся на создании уникальных визуальных решений для различных отраслей.
+                        </p>
+                        <p class="text-light-gold">
+                            Наша команда состоит из талантливых дизайнеров, художников и технологов, которые превращают ваши идеи в золотую реальность.
+                        </p>
+                    </div>
+                    <div class="relative">
+                        <div class="bg-dark-gold/20 p-6 rounded-xl border border-dark-gold">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-darker-bg p-4 rounded-lg border border-dark-gold text-center">
+                                    <div class="text-4xl font-bold text-rich-gold mb-2">5+</div>
+                                    <div class="text-light-gold">Лет опыта</div>
+                                </div>
+                                <div class="bg-darker-bg p-4 rounded-lg border border-dark-gold text-center">
+                                    <div class="text-4xl font-bold text-rich-gold mb-2">100+</div>
+                                    <div class="text-light-gold">Проектов</div>
+                                </div>
+                                <div class="bg-darker-bg p-4 rounded-lg border border-dark-gold text-center">
+                                    <div class="text-4xl font-bold text-rich-gold mb-2">15+</div>
+                                    <div class="text-light-gold">Профессионалов</div>
+                                </div>
+                                <div class="bg-darker-bg p-4 rounded-lg border border-dark-gold text-center">
+                                    <div class="text-4xl font-bold text-rich-gold mb-2">95%</div>
+                                    <div class="text-light-gold">Довольных клиентов</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="tab-content py-12">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-display font-bold mb-2 text-rich-gold text-center">Наши продукты</h2>
+                <div class="h-1 w-24 bg-rich-gold mx-auto mb-12"></div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Product 1 -->
+                    <div class="product-card bg-darker-bg rounded-xl overflow-hidden border border-dark-gold transition-all duration-300">
+                        <div class="relative">
+                            <div class="bg-gradient-to-r from-dark-gold to-rich-gold h-48 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-5xl mb-2">🎮</div>
+                                    <h3 class="text-xl font-bold text-dark-bg">Minecraft Preview</h3>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 right-4 bg-dark-bg text-rich-gold px-3 py-1 rounded-full text-sm font-bold">
+                                v1
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-light-gold">Превью для видео Minecraft v1</h3>
+                            <p class="text-light-gold mb-4">
+                                Классическое превью в стиле Minecraft с элементами золотого дизайна. Идеально подходит для летсплей-каналов.
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-rich-gold">50 ₽</span>
+                                <button class="bg-rich-gold text-dark-bg px-4 py-2 rounded-lg hover:bg-light-gold transition-colors">
+                                    Купить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card bg-darker-bg rounded-xl overflow-hidden border border-dark-gold transition-all duration-300">
+                        <div class="relative">
+                            <div class="bg-gradient-to-r from-rich-gold to-light-gold h-48 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-5xl mb-2">⛏️</div>
+                                    <h3 class="text-xl font-bold text-dark-bg">Minecraft Preview</h3>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 right-4 bg-dark-bg text-rich-gold px-3 py-1 rounded-full text-sm font-bold">
+                                v2
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-light-gold">Превью для видео Minecraft v2</h3>
+                            <p class="text-light-gold mb-4">
+                                Улучшенная версия с анимационными элементами и динамическим золотым оформлением. Для продвинутых геймеров.
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-rich-gold">50 ₽</span>
+                                <button class="bg-rich-gold text-dark-bg px-4 py-2 rounded-lg hover:bg-light-gold transition-colors">
+                                    Купить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card bg-darker-bg rounded-xl overflow-hidden border border-dark-gold transition-all duration-300">
+                        <div class="relative">
+                            <div class="bg-gradient-to-r from-light-gold to-rich-gold h-48 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-5xl mb-2">🏰</div>
+                                    <h3 class="text-xl font-bold text-dark-bg">Minecraft Preview</h3>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 right-4 bg-dark-bg text-rich-gold px-3 py-1 rounded-full text-sm font-bold">
+                                v3
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-light-gold">Превью для видео Minecraft v3</h3>
+                            <p class="text-light-gold mb-4">
+                                Премиум пакет с 3D элементами и золотыми текстурными эффектами. Эксклюзивный дизайн для топовых каналов.
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-rich-gold">150 ₽</span>
+                                <button class="bg-rich-gold text-dark-bg px-4 py-2 rounded-lg hover:bg-light-gold transition-colors">
+                                    Купить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card bg-darker-bg rounded-xl overflow-hidden border border-dark-gold transition-all duration-300">
+                        <div class="relative">
+                            <div class="bg-gradient-to-r from-dark-gold to-light-gold h-48 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-5xl mb-2">💎</div>
+                                    <h3 class="text-xl font-bold text-dark-bg">Minecraft Preview</h3>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 right-4 bg-dark-bg text-rich-gold px-3 py-1 rounded-full text-sm font-bold">
+                                v4
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-light-gold">Превью для видео Minecraft v4</h3>
+                            <p class="text-light-gold mb-4">
+                                Алмазное издание с уникальными золотыми анимациями и персонализированными элементами. Лучшее предложение.
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-rich-gold">200 ₽</span>
+                                <button class="bg-rich-gold text-dark-bg px-4 py-2 rounded-lg hover:bg-light-gold transition-colors">
+                                    Купить
+                                </button>
+                            </div>
+                        </div>
+                    </div>                
+                  <h2 class="text-4xl font-display font-bold mb-2 text-rich-gold text-center mt-20">Дизайн канала</h2>
+                  <div class="h-1 w-24 bg-rich-gold mx-auto mb-12"></div>
+                  
+                  <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+                      <!-- Channel Design -->
+                      <div class="product-card bg-darker-bg rounded-xl overflow-hidden border border-dark-gold transition-all duration-300">
+                          <div class="relative">
+                              <div class="bg-gradient-to-r from-dark-gold to-light-gold h-48 flex items-center justify-center">
+                                  <div class="text-center">
+                                      <div class="text-5xl mb-2">🎨</div>
+                                      <h3 class="text-xl font-bold text-dark-bg">Оформление канала</h3>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="p-6">
+                              <h3 class="text-xl font-bold mb-2 text-light-gold">Полное оформление канала</h3>
+                              <p class="text-light-gold mb-4">
+                                  Баннер, аватарка, шапка канала в едином золотом стиле. Подходит для YouTube и Twitch.
+                              </p>
+                              <div class="flex justify-between items-center">
+                                  <span class="text-xl font-bold text-rich-gold">150 ₽</span>
+                                  <button class="bg-rich-gold text-dark-bg px-4 py-2 rounded-lg hover:bg-light-gold transition-colors">
+                                      Купить
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="tab-content py-12">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-display font-bold mb-2 text-rich-gold text-center">Наша команда</h2>
+                <div class="h-1 w-24 bg-rich-gold mx-auto mb-12"></div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Team Member 1 -->
+                    <div class="team-card bg-darker-bg rounded-xl overflow-hidden border border-dark-gold transition-all duration-300">
+                        <div class="bg-gradient-to-b from-dark-gold to-rich-gold h-64 flex items-end justify-center">
+                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-32 h-32 mb-8"></div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-bold text-light-gold mb-1">Анна Иванова</h3>
+                            <p class="text-rich-gold mb-4">Креативный директор</p>
+                            <p class="text-light-gold mb-4">
+                                Создает уникальные концепции и следит за золотым стандартом всех проектов студии.
+                            </p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="text-light-gold hover:text-rich-gold"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="text-light-gold hover:text-rich-gold"><i class="fab fa-behance"></i></a>
+                                <a href="#" class="text-light-gold hover:text-rich-gold"><i class="fab fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 2 -->
+                    <div class="team-card bg-darker-bg rounded-xl overflow-hidden border border-dark-gold transition-all duration-300">
+                        <div class="bg-gradient-to-b from-rich-gold to-light-gold h-64 flex items-end justify-center">
+                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-32 h-32 mb-8"></div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-bold text-light-gold mb-1">Максим Петров</h3>
+                            <p class="text-rich-gold mb-4">Главный дизайнер</p>
+                            <p class="text-light-gold mb-4">
+                                Эксперт по золотым текстурам и анимациям. Автор премиальных превью для Minecraft.
+                            </p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="text-light-gold hover:text-rich-gold"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="text-light-gold hover:text-rich-gold"><i class="fab fa-behance"></i></a>
+                                <a href="#" class="text-light-gold hover:text-rich-gold"><i class="fab fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 3 -->
+                    <div class="team-card bg-darker-bg rounded-xl overflow-hidden border border-dark-gold transition-all duration-300">
+                        <div class="bg-gradient-to-b from-light-gold to-rich-gold h-64 flex items-end justify-center">
+                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-32 h-32 mb-8"></div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-bold text-light-gold mb-1">Екатерина Смирнова</h3>
+                            <p class="text-rich-gold mb-4">Менеджер проектов</p>
+                            <p class="text-light-gold mb-4">
+                                Обеспечивает безупречное взаимодействие с клиентами и золотой сервис на всех этапах.
+                            </p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="text-light-gold hover:text-rich-gold"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="text-light-gold hover:text-rich-gold"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-light-gold hover:text-rich-gold"><i class="fab fa-telegram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="tab-content py-12">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-display font-bold mb-2 text-rich-gold text-center">Связь с нами</h2>
+                <div class="h-1 w-24 bg-rich-gold mx-auto mb-12"></div>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-display font-semibold mb-6 text-light-gold">Наши контакты</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-rich-gold text-dark-bg p-3 rounded-lg mr-4">
+                                    <i class="fas fa-envelope text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-light-gold mb-1">Email</h4>
+                                    <p class="text-light-gold">info.holpendesign@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-rich-gold text-dark-bg p-3 rounded-lg mr-4">
+                                    <i class="fas fa-clock text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-light-gold mb-1">Часы работы</h4>
+                                    <p class="text-light-gold">Пн-Пт: 10:00 - 19:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="text-lg font-semibold text-light-gold mb-4">Мы в соцсетях</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-12 h-12 rounded-full bg-dark-gold flex items-center justify-center text-light-gold hover:bg-rich-gold transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-dark-gold flex items-center justify-center text-light-gold hover:bg-rich-gold transition-colors">
+                                    <i class="fab fa-vk"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-dark-gold flex items-center justify-center text-light-gold hover:bg-rich-gold transition-colors">
+                                    <i class="fab fa-telegram"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-dark-gold flex items-center justify-center text-light-gold hover:bg-rich-gold transition-colors">
+                                    <i class="fab fa-behance"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-display font-semibold mb-6 text-light-gold">Напишите нам</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-light-gold mb-2">Ваше имя</label>
+                                <input type="text" class="contact-input w-full bg-darker-bg border border-dark-gold rounded-lg px-4 py-3 text-light-gold focus:outline-none">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-light-gold mb-2">Email</label>
+                                <input type="email" class="contact-input w-full bg-darker-bg border border-dark-gold rounded-lg px-4 py-3 text-light-gold focus:outline-none">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-light-gold mb-2">Тема сообщения</label>
+                                <select class="contact-input w-full bg-darker-bg border border-dark-gold rounded-lg px-4 py-3 text-light-gold focus:outline-none">
+                                    <option>Выберите тему</option>
+                                    <option>Заказ дизайна</option>
+                                    <option>Сотрудничество</option>
+                                    <option>Техническая поддержка</option>
+                                    <option>Другое</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-light-gold mb-2">Сообщение</label>
+                                <textarea rows="4" class="contact-input w-full bg-darker-bg border border-dark-gold rounded-lg px-4 py-3 text-light-gold focus:outline-none"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="gold-gradient text-dark-bg font-bold py-3 px-6 rounded-lg w-full hover:opacity-90 transition-opacity">
+                                Отправить сообщение
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darker-bg border-t border-dark-gold py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-xl font-display gold-text-gradient">HOLPEN DESIGN</h2>
+                    <p class="text-light-gold mt-2 text-sm">
+                        Золотой стандарт дизайна с 2024 года
+                    </p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-light-gold mb-2">© 2024-2025 Holpen Design. Все права защищены.</p>
+                    <p class="text-light-gold text-sm">
+                        Создано с <i class="fas fa-heart text-rich-gold"></i> для ценителей дизайна
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            // Function to switch tabs
+            function switchTab(tabId) {
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show selected tab content
+                document.getElementById(tabId).classList.add('active');
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            }
+            
+            // Add click event to tab links
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+            
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Initialize with About tab active
+            switchTab('about');
+        });
+    </script>
+</body>
+</html>
